@@ -1,6 +1,6 @@
 # PHPoole recipe: Service Worker
 
-This repository should help you to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run your [PHPoole](http://phpoole.org/) static website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
+This repository should help to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run a [PHPoole](http://phpoole.org/) static website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
 
 ## Prerequisites
 * A [PHPoole](http://phpoole.org/) website
@@ -9,10 +9,12 @@ This repository should help you to implement a [service worker](https://develope
 
 ## Recipe
 
-1. Create a [manifest file](/static/manifest.json)  
-`<link rel="manifest" href="{{ url('manifest.json') }}">`
-2. Add `sw.js`
+1. Add `manifest.webmanifest`
+  * Add a [template file](/layouts/manifest.twig)
+  * Add a [content file](/content/manifest.md)
+2. Add `link` to manifest in head: `<link rel="manifest" href="{{ url('manifest.webmanifest') }}">`
+3. Add `sw.js`
   * Add a [template file](/layouts/sw.js.twig)
-  * Add a [content file](/content/sw.md) (because PHPoole is driven by content ^^)
-3. [Register the service worker](/layouts/includes/regsw.js.twig) in the [main template file](/layouts/index.html.twig)
-4. Enable the service worker and define pre-cached files list in [config file](/phpoole.yml)!
+  * Add a [content file](/content/sw.md)
+4. [Register the service worker](/layouts/includes/regsw.js.twig) in the [main template file](/layouts/index.html.twig)
+5. Enable the service worker and define pre-cached files list in [config file](/phpoole.yml)!
