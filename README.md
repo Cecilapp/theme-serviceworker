@@ -9,7 +9,8 @@ This repository should help you to implement a [service worker](https://develope
 
 ## Recipe
 
-1. Create a [manifest file](/static/manifest.json)
+1. Create a [manifest file](/static/manifest.json)  
+`<link rel="manifest" href="{{ url('manifest.json') }}">`
 2. Add `sw.js`
   * Add a [template file](/layouts/sw.js.twig)
   * Add a [content file](/content/sw.md) (because PHPoole is driven by content ^^)
