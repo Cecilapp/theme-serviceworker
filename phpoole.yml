@@ -1,6 +1,17 @@
 site:
+    manifest:
+        lang: fr-FR
+        start_url: /
+        display: standalone
+        orientation: portrait
+        background_color: '#ffffff'
+        theme_color: '#202020'
     serviceworker:
         enabled: true
+        file: sw.js
         precache:
             - icon.png
-            - css/style.css
+            - css/poole.css
+            - css/syntax.css
+            - css/lanyon.css
+            - css/narno.com.css
