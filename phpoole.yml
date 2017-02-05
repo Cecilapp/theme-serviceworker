@@ -1,0 +1,6 @@
+site:
+    serviceworker:
+        enabled: true
+        precache:
+            - icon.png
+            - css/style.css
