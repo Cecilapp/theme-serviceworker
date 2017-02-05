@@ -12,9 +12,13 @@ This repository should help to implement a [service worker](https://developers.g
 1. Add `manifest.webmanifest`
   * Add a [template file](/layouts/manifest.twig)
   * Add a [content file](/content/manifest.md)
-2. Add `link` to manifest in head: `<link rel="manifest" href="{{ url('manifest.webmanifest') }}">`
+2. Add `<link>` to manifest in head:  
+`<link rel="manifest" href="{{ url('manifest.webmanifest') }}">`
 3. Add `sw.js`
   * Add a [template file](/layouts/sw.js.twig)
   * Add a [content file](/content/sw.md)
-4. [Register the service worker](/layouts/includes/regsw.js.twig) in the [main template file](/layouts/index.html.twig)
+4. [Register the service worker](/layouts/includes/regsw.js.twig) in the main template file:  
+`{% if site.serviceworker is defined and site.serviceworker.enabled %}
+{% include 'includes/regsw.js.twig' %}
+{% endif %}`
 5. Enable the service worker and define pre-cached files list in [config file](/phpoole.yml)!
