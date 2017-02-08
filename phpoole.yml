@@ -10,8 +10,5 @@ site:
         enabled: true
         file: sw.js
         precache:
-            - icon.png
-            - css/poole.css
-            - css/syntax.css
-            - css/lanyon.css
-            - css/narno.com.css
+            - img/icon.png
+            - css/style.css
