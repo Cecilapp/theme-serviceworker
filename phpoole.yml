@@ -1,4 +1,11 @@
 site:
+    fmpages:
+        manifest:
+            layout: manifest
+            permalink: manifest.webmanifest
+        sw:
+            layout: sw.js
+            permalink: sw.js
     manifest:
         lang: en
         start_url: /
