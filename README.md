@@ -24,13 +24,13 @@ theme:
 ```html
 <link rel="manifest" href="{{ url('manifest.webmanifest') }}">
 ```
-4. [Register the service worker](/layouts/includes/regsw.js.twig) in the main template file:  
+3. [Register the service worker](/layouts/includes/regsw.js.twig) in the main template file:  
 ```html
 {% if site.serviceworker is defined and site.serviceworker.enabled %}
 {% include 'includes/regsw.js.twig' %}
 {% endif %}
 ```
-5. Enable the service worker and define pre-cached files list in config file:  
+4. Enable the service worker and define pre-cached files list in config file:  
 ```yaml
 site:
     serviceworker:
