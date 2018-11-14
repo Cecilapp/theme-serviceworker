@@ -1,13 +1,13 @@
 site:
     manifest:
-        lang: fr-FR
+        lang: en
         start_url: /
         display: standalone
         orientation: portrait
         background_color: '#ffffff'
         theme_color: '#202020'
     serviceworker:
-        enabled: true
+        enabled: false
         file: sw.js
         precache:
             - img/icon.png
