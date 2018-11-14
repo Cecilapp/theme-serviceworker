@@ -1,0 +1,18 @@
+{
+  "name": "phpoole/theme-serviceworker",
+  "type": "phpoole-theme",
+  "description": "PHPoole component theme service worker",
+  "keywords": ["PHPoole", "theme", "service worker"],
+  "license": "MIT",
+  "require": {
+    "phpoole/theme-installer": "^1.2"
+  },
+  "extra": {
+    "name": "serviceworker",
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
