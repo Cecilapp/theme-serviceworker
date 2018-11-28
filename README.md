@@ -1,21 +1,21 @@
-# PHPoole component theme: Service Worker
+# Cecil component theme: Service Worker
 
-> This theme should help to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run a [PHPoole](https://phpoole.org) static website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
+> This theme should help to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run a [Cecil](https://cecil.app) static website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
 
 ## Prerequisites
-* A [PHPoole](https://phpoole.org) website
+* A [Cecil](https://cecil.app) website
 * A [supported browser](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/serviceworker/)
 * HTTPS
 
 ## Installation
 
 ```bash
-composer require phpoole/theme-serviceworker
+composer require cecil/theme-serviceworker
 ```
 
 ## Usage
 
-1. Add theme in your `phpoole.yml`:  
+1. Add theme in your `config.yml`:  
 ```yaml
 theme:
   - serviceworker
