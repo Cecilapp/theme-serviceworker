@@ -22,12 +22,12 @@ theme:
 ```
 2. Add `<link>` to manifest in head:  
 ```html
-<link rel="manifest" href="{{ url('manifest.webmanifest') }}">
+<link rel="manifest" href="{{ url('manifest') }}">
 ```
-3. [Register the service worker](/layouts/includes/regsw.js.twig) in the main template file:  
+3. [Register the service worker](/layouts/parials/regsw.js.twig) in the main template file:  
 ```html
 {% if site.serviceworker is defined and site.serviceworker.enabled %}
-{% include 'includes/regsw.js.twig' %}
+{% include 'partials/regsw.js.twig' %}
 {% endif %}
 ```
 4. Enable the service worker and define pre-cached files list in config file:  
