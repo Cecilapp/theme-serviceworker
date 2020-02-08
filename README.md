@@ -4,7 +4,7 @@
 
 ## Prerequisites
 * A [Cecil](https://cecil.app) website
-* A [supported browser](https://developer.microsoft.com/en-us/microsoft-edge/platform/status/serviceworker/)
+* A [supported browser](https://developer.mozilla.org/docs/Web/API/Service_Worker_API/Using_Service_Workers#Compatibilit%C3%A9_des_navigateurs)
 * HTTPS
 
 ## Installation
@@ -33,9 +33,9 @@ theme:
 4. Enable the service worker and define pre-cached files list in config file:  
 ```yaml
 site:
-    serviceworker:
-       enabled: true
-       precache:
-           - img/icon.png
-           - css/style.css
+  serviceworker:
+    enabled: true
+    precache:
+      - img/icon.png
+      - css/style.css
 ```
