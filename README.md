@@ -32,10 +32,9 @@ theme:
 ```
 4. Enable the service worker and define pre-cached files list in config file:  
 ```yaml
-site:
-  serviceworker:
-    enabled: true
-    precache:
-      - img/icon.png
-      - css/style.css
+serviceworker:
+  enabled: true
+  precache:
+    - img/icon.png
+    - css/style.css
 ```
