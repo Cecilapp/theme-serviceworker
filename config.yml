@@ -1,20 +1,19 @@
-site:
-  virtualpages:
-    manifest:
-      output: webmanifest
-    sw:
-      layout: sw
-      output: js
-  manifest:
-    lang: en
-    start_url: /
-    display: standalone
-    orientation: portrait
-    background_color: '#ffffff'
-    theme_color: '#202020'
-  serviceworker:
-    enabled: false
-    file: sw.js
-    precache:
-      - img/icon.png
-      - css/style.css
+virtualpages:
+  - path: manifest
+    output: webmanifest
+  - path: sw
+    layout: sw
+    output: js
+manifest:
+  lang: en
+  start_url: /
+  display: standalone
+  orientation: portrait
+  background_color: '#ffffff'
+  theme_color: '#202020'
+serviceworker:
+  enabled: false
+  file: sw.js
+  precache:
+    - img/icon.png
+    - css/style.css
