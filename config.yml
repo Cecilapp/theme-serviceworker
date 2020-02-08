@@ -1,7 +1,9 @@
-virtualpages:
-  - path: manifest
+defaultpages:
+  manifest:
+    path: manifest
     output: webmanifest
-  - path: sw
+  sw:
+    path: sw
     layout: sw
     output: js
 manifest:
@@ -15,5 +17,4 @@ serviceworker:
   enabled: false
   file: sw.js
   precache:
-    - img/icon.png
     - css/style.css
