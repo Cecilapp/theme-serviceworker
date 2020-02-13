@@ -3,8 +3,8 @@ defaultpages:
     path: manifest
     output: webmanifest
   sw:
-    path: sw
-    layout: sw
+    path: serviceworker
+    layout: serviceworker
     output: js
 manifest:
   lang: en
@@ -15,6 +15,4 @@ manifest:
   theme_color: '#202020'
 serviceworker:
   enabled: false
-  file: sw.js
-  precache:
-    - css/style.css
+  file: serviceworker.js

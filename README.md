@@ -26,9 +26,7 @@ theme:
 ```
 3. [Register the service worker](/layouts/parials/regsw.js.twig) in the main template file:  
 ```html
-{% if site.serviceworker is defined and site.serviceworker.enabled %}
 {% include 'partials/regsw.js.twig' %}
-{% endif %}
 ```
 4. Enable the service worker and define pre-cached files list in config file:  
 ```yaml

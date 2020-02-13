@@ -8,8 +8,8 @@ var urlsToCache = [];
 {% for page in site.pages %}
 urlsToCache.push('{{ url(page) }}');
 {% endfor %}
+{% if site.serviceworker.precache is defined %}
 // pre-cache files
-{% if site.serviceworker is defined %}
 {% for file in site.serviceworker.precache %}
 urlsToCache.push('{{ url(file) }}');
 {% endfor %}
@@ -21,8 +21,10 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     self.skipWaiting(
       caches.open(CACHE).then(function(cache) {
-        console.log('[SW] Caching');
-        return cache.addAll(urlsToCache);
+        console.log('[SW] Pre-caching');
+        return cache.addAll(urlsToCache).then(() => {
+          //
+        }).catch(error => console.error(`${error}`));
       })
     )
   );
@@ -46,19 +48,20 @@ self.addEventListener('activate', function(event) {
 
 // fetch data
 self.addEventListener('fetch', function(event) {
-  console.log('[SW] Fetch ', event.request.url);
-
   // ignore non-GET requests
   if (event.request.method !== 'GET') {
     return;
   }
-
   // ignore non-local resources
   url = new URL(event.request.url);
   if (!(url.origin == location.origin)) {
     return;
   }
-
+  // ignore Cecil's watcher
+  if (url.pathname == '/watcher') {
+    return;
+  }
+  console.log('[SW] Fetch ', event.request.url);
   event.respondWith(
     caches.match(event.request).then(function(response) {
       // return response from cache if exist
