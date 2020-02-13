@@ -24,7 +24,7 @@ theme:
 ```html
 <link rel="manifest" href="{{ url('manifest') }}">
 ```
-3. [Register the service worker](/layouts/parials/regsw.js.twig) in the main template file:  
+3. [Register the service worker](https://developers.google.com/web/fundamentals/primers/service-workers/registration#common_registration_boilerplate) in the main template file:  
 ```html
 {% include 'partials/regsw.js.twig' %}
 ```
