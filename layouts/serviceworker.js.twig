@@ -22,9 +22,12 @@ self.addEventListener('install', function(event) {
     self.skipWaiting(
       caches.open(CACHE).then(function(cache) {
         console.log('[SW] Pre-caching');
-        return cache.addAll(urlsToCache).then(() => {
+        /*return cache.addAll(urlsToCache).then(() => {
           //
-        }).catch(error => console.error(`${error}`));
+        }).catch(error => console.error('[SW] can\'t catch all URL'));*/
+        urlsToCache.forEach(function (url) {
+          cache.add(url).catch();
+        });
       })
     )
   );
