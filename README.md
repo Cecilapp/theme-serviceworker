@@ -53,7 +53,6 @@ manifest:
 serviceworker:
   enabled: true
   precache:
-    - img/icon.png
+    - icon-512x512.png
     - css/style.css
 ```
-
