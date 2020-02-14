@@ -13,7 +13,7 @@
 composer require cecil/theme-serviceworker
 ```
 
-> Or [download the latest archive](https://github.com/Cecilapp/theme-serviceworker/releases/latest/) and uncompress its content in `themes/theme-serviceworker`.
+> Or [download the latest archive](https://github.com/Cecilapp/theme-serviceworker/releases/latest/) and uncompress its content in `themes/serviceworker`.
 
 ## Usage
 
