@@ -12,9 +12,9 @@
   "icons": [
 {%- for icon in site.manifest.icons -%}
   {
-    "src": "{{ url('icon-512x512.png') }}",
-    "sizes": "512x512",
-    "type": "image/png"
+    "src": "{{ url(icon.src) }}",
+    "sizes": "{{ icon.sizes }}",
+    "type": "{{ icon.type }}"
   }{% if loop.length > 1 and not loop.last %},{% endif %}
 {%- endfor -%}
   ]
