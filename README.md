@@ -13,6 +13,8 @@
 composer require cecil/theme-serviceworker
 ```
 
+> Or [download the latest archive](https://github.com/Cecilapp/theme-serviceworker/releases/latest/) and uncompress its content in `themes/theme-serviceworker`.
+
 ## Usage
 
 1. Add `serviceworker` in the `themes` section of your `config.yml`:
