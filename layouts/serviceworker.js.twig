@@ -1,15 +1,13 @@
-// service worker config
-var CACHE_VERSION = "{{ 'now'|date('U') }}";
-var CACHE_NAME = '{{ site.title|urlize }}';
+var CACHE_VERSION = "{{ 'now'| date('U') }}";
+var CACHE_NAME = '{{ site.title | urlize }}';
 var CACHE = CACHE_NAME + '-v' + CACHE_VERSION;
-var urlsToCache = [];
 
-// pre-cache all pages
+// pre-cache
+var urlsToCache = [];
 {% for page in site.pages %}
 urlsToCache.push('{{ url(page) }}');
 {% endfor %}
 {% if site.serviceworker.precache is defined %}
-// pre-cache files
 {% for file in site.serviceworker.precache %}
 urlsToCache.push('{{ url(file) }}');
 {% endfor %}
