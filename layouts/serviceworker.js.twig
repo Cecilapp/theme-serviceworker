@@ -19,12 +19,9 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     self.skipWaiting(
       caches.open(CACHE).then(function(cache) {
-        console.log('[SW] Pre-caching');
-        /*return cache.addAll(urlsToCache).then(() => {
-          //
-        }).catch(error => console.error('[SW] can\'t catch all URL'));*/
+        console.log('[SW] Pre-cache');
         urlsToCache.forEach(function (url) {
-          cache.add(url).catch();
+          cache.add(url).catch(error => console.error(`[SW] Can't add "${url}" to cache`));
         });
       })
     )
@@ -38,13 +35,12 @@ self.addEventListener('activate', function(event) {
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
         if (key !== CACHE) {
-          console.log('[SW] Removing old cache', key);
+          console.log(`[SW] Remove old cache '${key}'`);
           return caches.delete(key);
         }
       }));
     })
   );
-  //event.waitUntil(self.clients.claim());
 });
 
 // fetch data
@@ -62,7 +58,9 @@ self.addEventListener('fetch', function(event) {
   if (url.pathname == '/watcher') {
     return;
   }
+{% if site.serviceworker.debug|default(false) %}
   console.log('[SW] Fetch ', event.request.url);
+{% endif %}
   event.respondWith(
     caches.match(event.request).then(function(response) {
       // return response from cache if exist
@@ -73,11 +71,7 @@ self.addEventListener('fetch', function(event) {
       var fetchRequest = event.request.clone();
       return fetch(fetchRequest).then(function(response) {
         // ignore if response is not valid
-        if (!response
-          || response.status !== 200
-          || response.type !== 'basic'
-          //|| fetchRequest.mode !== 'same-origin'
-        ) {
+        if (!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
         var responseToCache = response.clone();
@@ -86,7 +80,9 @@ self.addEventListener('fetch', function(event) {
           if (event.request.url.startsWith('data:')) {
             return;
           }
+{% if site.serviceworker.debug|default(false) %}
           console.log('[SW] Store ', event.request.url);
+{% endif %}
           cache.put(event.request, responseToCache);
         });
         return response;

@@ -15,20 +15,40 @@ composer require cecil/theme-serviceworker
 
 ## Usage
 
-1. Add theme in your `config.yml`:  
+1. Add `serviceworker` in the `themes` section of your `config.yml`:
+
 ```yaml
 theme:
   - serviceworker
 ```
-2. Add `<link>` to manifest in head:  
-```html
+
+2. Add and configure the [web manifest](https://developer.mozilla.org/fr/docs/Web/Manifest):
+
+**`<head>`:**
+```twig
 <link rel="manifest" href="{{ url('manifest') }}">
 ```
+
+**`config.yml`:**
+
+```yaml
+manifest:
+  background_color: '#FFFFFF'
+  theme_color: '#202020'
+  icons:
+    - src: icon-512x512.png
+      sizes: 512x512
+      type: image/png
+```
+
 3. [Register the service worker](https://developers.google.com/web/fundamentals/primers/service-workers/registration#common_registration_boilerplate) in the main template file:  
-```html
+
+```twig
 {% include 'partials/regsw.js.twig' %}
 ```
-4. Enable the service worker and define pre-cached files list in config file:  
+
+4. Enable the service worker and define pre-cached files list in your `config.yml`:  
+
 ```yaml
 serviceworker:
   enabled: true
@@ -36,3 +56,4 @@ serviceworker:
     - img/icon.png
     - css/style.css
 ```
+
