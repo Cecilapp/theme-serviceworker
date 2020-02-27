@@ -1,5 +1,13 @@
     <script>
       if ('serviceWorker' in navigator) {
+{% if site.serviceworker.notification.enabled|default(false) %}
+        Notification.requestPermission(permission => {
+          if (!('permission' in Notification)) {
+            Notification.permission = permission;
+          }
+          return permission;
+        })
+{% endif %}
 {% if site.serviceworker is defined and site.serviceworker.enabled %}
         navigator.serviceWorker.register('{{ url("serviceworker.js") }}').then(function (registration) {
           console.log('[SW] Registration successful with scope: ', registration.scope);
