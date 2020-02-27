@@ -15,3 +15,6 @@ manifest:
       type: image/png
 serviceworker:
   enabled: false
+  notification:
+    enabled: false
+    message: 'New version'
