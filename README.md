@@ -26,13 +26,12 @@ theme:
 
 2. Add and configure the [web manifest](https://developer.mozilla.org/fr/docs/Web/Manifest):
 
-**`<head>`:**
+**`template`:**
 ```twig
 <link rel="manifest" href="{{ url('manifest') }}">
 ```
 
 **`config.yml`:**
-
 ```yaml
 manifest:
   background_color: '#FFFFFF'
@@ -49,7 +48,7 @@ manifest:
 {% include 'partials/regsw.js.twig' %}
 ```
 
-4. Enable the service worker and define pre-cached files list in your `config.yml`:  
+4. Enable the service worker and define pre-cached files (optional) in your `config.yml`:  
 
 ```yaml
 serviceworker:
