@@ -45,7 +45,17 @@ self.addEventListener('activate', function(event) {
         if (key !== CACHE) {
           // notification
 {% if site.serviceworker.notification.enabled|default(false) %}
-          self.registration.showNotification("{{ site.serviceworker.notification.message|default('New version') }}");
+          console.log('[SW] Notification enabled');
+          const title = "{{ site.serviceworker.notification.message|default('New version') }}";
+          const options = {
+            icon: '{{ site.manifest.icons|first.src }}'
+          };
+          self.registration.showNotification(title, options);
+          self.addEventListener('notificationclick', function (event) {
+            const clickedNotification = event.notification;
+            clickedNotification.close();
+            event.waitUntil(clients.openWindow('{{ site.baseurl }}'));
+          });
 {% endif %}
           // flush cache
           console.log(`[SW] Remove old cache '${key}'`);
