@@ -81,6 +81,14 @@ self.addEventListener('fetch', function(event) {
   if (url.pathname == '/watcher') {
     return;
   }
+  // ignore admin
+  if (url.pathname.indexOf('/admin') > -1) {
+    return;
+  }
+  // ignore Netlify
+  if (url.pathname.indexOf('/.netlify') > -1) {
+    return;
+  }
 {% if site.serviceworker.debug|default(false) %}
   console.log('[SW] Fetch ', event.request.url);
 {% endif %}
