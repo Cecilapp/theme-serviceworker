@@ -1,6 +1,6 @@
 # Cecil component theme: Service Worker
 
-> This theme should help to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run a [Cecil](https://cecil.app) static website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
+> The _Netlify_ component theme for [Cecil](https://cecil.app) provide helpers to implement a [service worker](https://developers.google.com/web/fundamentals/getting-started/primers/service-workers#what_is_a_service_worker) to run your website as a [Progressive Web App](https://developers.google.com/web/progressive-web-apps/).
 
 ## Prerequisites
 * A [Cecil](https://cecil.app) website
@@ -17,7 +17,7 @@ composer require cecil/theme-serviceworker
 
 ## Usage
 
-1. Add `serviceworker` in the `themes` section of your `config.yml`:
+1. Add `serviceworker` in the `theme` section of your `config.yml`:
 
 ```yaml
 theme:
