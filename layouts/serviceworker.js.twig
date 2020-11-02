@@ -1,6 +1,7 @@
-var CACHE_VERSION = "{{ 'now'| date('U') }}";
-var CACHE_NAME = '{{ site.title | urlize }}';
+var CACHE_VERSION = "{{ 'now'|date('U') }}";
+var CACHE_NAME = '{{ site.title|slugify }}';
 var CACHE = CACHE_NAME + '-v' + CACHE_VERSION;
+var PATH_TO_IGNORE = ['/admin', '/.netlify'];
 
 // pre-cache pages
 var urlsToCache = [];
@@ -44,7 +45,7 @@ self.addEventListener('activate', function(event) {
         // new version?
         if (key !== CACHE) {
           // notification
-{% if site.serviceworker.notification.enabled|default(false) %}
+          {%- if site.serviceworker.notification.enabled|default(false) ~%}
           console.log('[SW] Notification enabled');
           const title = "{{ site.serviceworker.notification.message|default('New version') }}";
           const options = {
@@ -56,7 +57,7 @@ self.addEventListener('activate', function(event) {
             clickedNotification.close();
             event.waitUntil(clients.openWindow('{{ site.baseurl }}'));
           });
-{% endif %}
+          {%- endif ~%}
           // flush cache
           console.log(`[SW] Remove old cache '${key}'`);
           return caches.delete(key);
@@ -81,17 +82,21 @@ self.addEventListener('fetch', function(event) {
   if (url.pathname == '/watcher') {
     return;
   }
-  // ignore admin
-  if (url.pathname.indexOf('/admin') > -1) {
+  // ignore some paths
+  try {
+    PATH_TO_IGNORE.forEach(function (path) {
+      console.log(url.pathname);
+      if (url.pathname.indexOf(path) > -1) {
+        console.log('should ignore');
+        throw Exception;
+      }
+    });
+  } catch (e) {
     return;
   }
-  // ignore Netlify
-  if (url.pathname.indexOf('/.netlify') > -1) {
-    return;
-  }
-{% if site.serviceworker.debug|default(false) %}
+  {%- if site.serviceworker.debug|default(false) ~%}
   console.log('[SW] Fetch ', event.request.url);
-{% endif %}
+  {%- endif ~%}
   event.respondWith(
     caches.match(event.request).then(function(response) {
       // return response from cache if exist
@@ -111,9 +116,9 @@ self.addEventListener('fetch', function(event) {
           if (event.request.url.startsWith('data:')) {
             return;
           }
-{% if site.serviceworker.debug|default(false) %}
+          {%- if site.serviceworker.debug|default(false) ~%}
           console.log('[SW] Store ', event.request.url);
-{% endif %}
+          {%- endif ~%}
           cache.put(event.request, responseToCache);
         });
         return response;
