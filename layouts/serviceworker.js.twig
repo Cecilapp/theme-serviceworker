@@ -88,9 +88,7 @@ self.addEventListener('fetch', function(event) {
   // ignore some paths
   try {
     PATH_TO_IGNORE.forEach(function (path) {
-      console.log(url.pathname);
       if (url.pathname.indexOf(path) > -1) {
-        console.log('should ignore');
         throw Exception;
       }
     });
